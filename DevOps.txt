@@ -117,14 +117,18 @@ We have discussed the Devops Methodology, but this methodology cannot be put int
 	>- Common Git Commands:
 		- You can do the following tasks, when working with git. Let us explore the commands related to each of these tasks:
 			- Creating Repository:
-				- You can create a repository using the command 'git init'. Navigate to your project folder and enter the command git init to initialize a git repository for your project on the local system. 
+				- You can create a repository using the command 'git init'. Navigate to your project folder and enter the command git init to initialize a git repository for your project on the local system.
+ 
 			- Making Changes:
 				- Once the directory has been initialized you can check the status of the files, whether they are being tracked by git or not, using the command 'git status'.
 				- Since no files are being tracked right now, let us now stage these files. For that, enter the command 'git add .'. If we want to track all the files in the project folder, we can type the command 'git add'.
 				- Once files or changes have been staged, we are ready to commit them in our repository. We can commit the files using the command 'git commit -m "custom message"'.
+
 			- Syncing Repositories:
 				- Once everything is ready on our local, we can start pushing our changes to the remote repository. Copy your repository link and paste it in the command 'git remote add origin "<URL to repository>"'.
 				- To push the changes to your repository, enter the command 'git push origin <branch-name>' and hit enter. In our case the branch is master, hence 'git push origin master'. This command will then prompt for username and password, enter the values and hit enter.
+				- Similarly, if we want to download the remote repository to our local system, we can use the command 'git clone <URL>'. This command will create a folder with the repository name, and download all the contents of the repository inside this folder. In our example, repository contents were downloaded into the "Devops" folder.
+				- The git pull command is also used for pulling the latest changes from the repository, unlike git clone, this command can only work inside an initialized git repository. This command is used when you are already working in the cloned repository, and want to pull the latest changes, that others might have pushed to the remote repository. 'git pull <URL of link>'
 			- Parallel Development
 			
 
