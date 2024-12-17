@@ -1,0 +1,174 @@
+- WHY DEVOPS IS IMPORTANT?
+  - SOFTWARE COMPANY:
+    - Developers
+      - The role of a developer is to create applications and hand over their code to the operations team.
+      - Previously, the developer would execute the code on their own system and then send it to the operations 	team.
+    - Operations
+      - The operations team is responsible for testing the code and giving feedback to developers if any bugs are 	found. If everything is satisfactory, the operations team uploads the code to the build servers.
+      - However, when the operations team attempted to run the code on their system, it failed to execute!
+
+  - Despite improvements in software quality, there remained inefficiencies within the development team. A typical                        	software development team includes both Developers and Operations personnel.
+  - This leads to a lot of back and forth between the developer and the operations team, hence impacted    	efficiency.
+  - So this can be solved sing Devops!
+
+  -	TRADITIONAL IT			VS	DEVOPS
+  -------------------------------------------------------------------
+	Less Productive				More Productive
+	Skill Centric Teams			Teams is divided into specialized silos(units/technology)
+	More Time invested in planning		Smaller and Frequent releases lead to easy scheduling and less 							time in planning
+	Difficult to achieve target or goal	Frequent releases, with continuous feedback makes achieving 							targets easy
+ --------------------------------------------------------------------
+ 1. Predictability: DevOps offers a significantly lower failure rate of new releases.
+
+ 2. Reproducibility: Version everything so that earlier versions can be restored anytime.
+
+ 3. Maintainability: Effortless recovery process in the event of a new release crashing or disabling the current   system.
+
+ 4. Time to market: DevOps reduces the time to market up to 50% through streamlined software delivery. It is particularly the case for digital and mobile applications.
+
+ 5. Greater Quality: DevOps helps the team improve application development quality by incorporating infrastructure issues.
+
+ 6. Reduced Risk: DevOps incorporates security aspects in the software delivery lifecycle, and it helps reduce defects across the lifecycle.
+
+ 7. Resiliency: The Operational state of the software system is more stable, secure, and changes are auditable.
+
+ 8. Cost Efficiency: DevOps offers cost efficiency in the software development process, which is always an aspiration of IT management.
+
+ 9. Breaks larger code base into small pieces: DevOps is based on the agile programming method. Therefore, it allows breaking larger codebases into smaller and manageable chunks.
+
+
+- WHAT IS DEVOPS?
+	- Devops is a software development methodology/idea which improves the collaboration between developers and operations teams using various automation tools. These automation tools are implemented using various stages which are a part of the Devops Lifecycle.
+
+	1. Customer-Centric Action: The DevOps team must constantly take customer-centric action to invest in products and services.
+
+	2. End-To-End Responsibility: The DevOps team needs to provide performance support until they become end-of-life. This enhances the level of responsibility and the quality of the products engineered.
+
+	3. Continuous Improvement: DevOps culture focuses on continuous improvement to minimize waste, and it continuously speeds up the improvement of products or services offered.
+
+	4. Automate everything: Automation is a vital principle of the DevOps process, and this is not only for software development but also for the entire infrastructure landscape.
+
+	5. Work as one team: In the DevOps culture, the designer, developer, and tester are already defined, and all they need to do is work as one team with complete collaboration.
+
+	6. Monitor and test everything: Monitor and test everything: The DevOps team needs robust monitoring and testing procedures.
+
+
+
+- HOW TO LEARN DEVOPS?
+
+
+
+- HOW DEVOPS WORKS?
+	- The DevOps Lifecycle is a series of development stages that guide everyone as efficiently as possible through the end-to-end process of product development. All of these components of the DevOps lifecycle is necessary to take the maximum leverage of the DevOps methodology.
+	Stage 1) Continuous Development
+		This practice spans the planning and coding phases of the DevOps lifecycle. Version-control mechanisms might be involved.
+
+	Stage 2) Continuous Integration
+		This software engineering practice develops software by frequently integrating its components. It helps to ensure that changes in the source code do not break the build or cause other problems. This is the connection between the Developers and Operations(DEV <- integration -> OPs).
+
+	Stage 3) Continuous Testing
+		This DevOps lifecycle stage incorporates automated, prescheduled, continued code tests as application code is written or updated. Such tests can be written manually or in conjunction with continuous integration tools.
+
+	Stage 4) Continuous Deployment
+		The deployment process takes place continuously in this DevOps lifecycle phase. It is performed so that any changes made in the code should not affect the functioning of a high traffic website or app. It could be deployed on a test server or production server.
+
+	Stage 5) Continuous Monitoring
+		During this phase, developers collect data, monitor each function, and spot errors like low memory or server connection are broken. For example, when users log in, they should access their account, and a failure to do so means there’s a problem with your application.
+
+	Stage 6) Continuous Feedback
+		Continuous feedback is like a progress report or log. In this DevOps stage, the software automatically sends out information about performance and issues experienced by the end-user. It’s also an opportunity for customers to share their experiences and provide feedback.
+
+	Stage 7) Continuous Operations
+		It is the last, shortest, and most straightforward phase of DevOps. It also involves automating the application’s release and all these updates that help you keep cycles short and give developers and provide more time to focus on developing.
+
+
+
+WHAT EAXCTLY HAPPENS AT EACH STAGE:
+	- Continuous Development:
+		This stage involves committing codes to version control tools such as Git or SVN for maintaining the different versions of the code, and tools like Ant, Maven, Gradle for building/packaging the code into an executable file that can be forwarded to the QAs for testing.
+	- Continuous Integration:
+		The stage is a critical point in the whole Devops Lifecycle. It deals with integrating the different stages of the Devops lifecycle, and is therefore the key in automating the whole Devops Process.
+	- Continuous Deployment:
+		In this stage the code is built, the environment or the application is containerized and is pushed on to the desired server. The key processes in this stage are Configuration Management, Virtualization and Containerization.
+	- Continuous Testing:
+		The stage deals with automated testing of the application pushed by the developer. If there is an error, the message is sent back to the integration tool, this tool in turn notifies the developer of the error. If the test was a success, the message is sent to Integration tool which pushes the build on the production server.
+	- Continuous Monitoring:
+		The stage continuously monitors the deployed application for bugs or crashes. It can also be setup to collect user feedback. The collected data is then sent to the developers to improve the application.
+
+-> Benefits of the DevOps lifecycle
+	Here are some essential benefits of the DevOps lifecycle:
+	- The DevOps lifecycle is a useful approach that guides developers and IT operations professionals through the complex process of app creation.
+	- Better efficiencies indeed lead to a higher return on investment.
+	- Widely used by large and small teams can use it to help them organize, align, and track phases in the life cycle.
+	- Automatic monitoring, testing, and releases help developers detect and fix bugs early.
+	- Multiple automated methods for collecting feedback mean DevOps developers can learn more about their products and improve the quality of their code.
+
+
+
+- IMPORTANT DEVOPS TOOLS:
+We have discussed the Devops Methodology, but this methodology cannot be put into action without it's corresponding tools. Let us discuss the Devops tools with their respective lifecycle stages.
+  >- git:
+	>- Why git?
+		- Git is the most popular tool among all the distributed version-control system (DVCS) tool
+
+	>- What is Git?
+		- Git is a version-control system for tracking changes in computer files and coordinating work on those files among multiple people. It is primarily used for source-code management in software development, but it can be used to keep track of changes in any set of files.
+
+	>- Common Git Commands:
+		- You can do the following tasks, when working with git. Let us explore the commands related to each of these tasks:
+			- Creating Repository:
+				- You can create a repository using the command 'git init'. Navigate to your project folder and enter the command git init to initialize a git repository for your project on the local system. 
+			- Making Changes:
+				- Once the directory has been initialized you can check the status of the files, whether they are being tracked by git or not, using the command 'git status'.
+				- Since no files are being tracked right now, let us now stage these files. For that, enter the command 'git add .'. If we want to track all the files in the project folder, we can type the command 'git add'.
+				- Once files or changes have been staged, we are ready to commit them in our repository. We can commit the files using the command 'git commit -m "custom message"'.
+			- Syncing Repositories:
+				- Once everything is ready on our local, we can start pushing our changes to the remote repository. Copy your repository link and paste it in the command 'git remote add origin "<URL to repository>"'.
+				- To push the changes to your repository, enter the command 'git push origin <branch-name>' and hit enter. In our case the branch is master, hence 'git push origin master'. This command will then prompt for username and password, enter the values and hit enter.
+			- Parallel Development
+			
+
+  - Docker
+  - Puppet
+  - Ansible
+  - Jenkins
+  - Kubernetes
+  - Nagios
+Devops Tools Based on stages:
+	- Continuous Development:
+		- Git is a distributed version-control system for tracking changes in computer files and coordinating work on those files among multiple people. It is primarily used for source-code management in software development, but it can be used to keep track of changes in any set of files.
+	- Continuous Integration:
+		- Jenkins is an open source automation server written in Java. Jenkins helps to automate the non-human part of the software development process, with continuous integration and facilitating technical aspects of continuous delivery.
+	- Continuous Deployment:
+		- Virtualization and Containerization -> Docker. Configuration Management -> Puppet
+	- Continuous Testing:
+		- Selenium is a portable software-testing framework used for web applications. It is an open source tool which is used for automating the tests carried out on web browsers (Web applications are tested using any web browser).
+	- Continuous Monitoring:
+		- Nagios is an open-source Devops tool which is used for monitoring systems, networks and infrastructure. It also offers monitoring and alerting services for any configurable event.
+
+- IMPORTANT INTERVIEW QUESTIONS
+QUIZ 1:
+	- What is the primary objective of adopting Devops?
+		1. Faster software delivery ✅
+		2. Reducing team size
+		3. Increasing manual tasks
+		4. Avoiding cloud technology
+
+00::00
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
