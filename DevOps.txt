@@ -130,6 +130,9 @@ We have discussed the Devops Methodology, but this methodology cannot be put int
 				- Similarly, if we want to download the remote repository to our local system, we can use the command 'git clone <URL>'. This command will create a folder with the repository name, and download all the contents of the repository inside this folder. In our example, repository contents were downloaded into the "Devops" folder.
 				- The git pull command is also used for pulling the latest changes from the repository, unlike git clone, this command can only work inside an initialized git repository. This command is used when you are already working in the cloned repository, and want to pull the latest changes, that others might have pushed to the remote repository. 'git pull <URL of link>'
 			- Parallel Development
+				- Until now, we saw how you can work on git. But now imagine, multiple developers working on the same project or repository. To handle the workspace of multiple developers, we use branches. To create a branch from an existing branch, we type 'git branch <name-of-new-branch>'. Similarly, to delete a branch use the command 'git branch -D <branch name>'.
+				- To switch to the new branch, we type the command 'git checkout <branch-name>'
+				- Want to check the log for every commit detail in your repository? You can accomplish that using the command 'git log'.
 			
 
   - Docker
@@ -158,7 +161,7 @@ QUIZ 1:
 		3. Increasing manual tasks
 		4. Avoiding cloud technology
 
-00::00
+00:54:40
 
 
 
