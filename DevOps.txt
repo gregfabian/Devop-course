@@ -133,6 +133,9 @@ We have discussed the Devops Methodology, but this methodology cannot be put int
 				- Until now, we saw how you can work on git. But now imagine, multiple developers working on the same project or repository. To handle the workspace of multiple developers, we use branches. To create a branch from an existing branch, we type 'git branch <name-of-new-branch>'. Similarly, to delete a branch use the command 'git branch -D <branch name>'.
 				- To switch to the new branch, we type the command 'git checkout <branch-name>'
 				- Want to check the log for every commit detail in your repository? You can accomplish that using the command 'git log'.
+				- Want to save your work without committing the code? Git has got you covered. This can be helpful when you want to switch branches, but do not want to save your work to your git repository. To stash your staged files without committing just type in 'git stash'. If you want to stash your untracked files as well, type 'git stash -u'. Once you are back and want to retrieve working, type in 'git stash pop'.
+				- This command helps you in reverting a commit, to a previous version 'git revert <commit-id>'. <commit-id> can be obtained from the output of 'git log'.
+				- This command helps us in checking the differences between two versions of a file 'git diff <commit-id of version x> <commit-id of version y>'. <commit-id> can be obtained from the output of 'git log'
 			
 
   - Docker
