@@ -138,7 +138,11 @@ We have discussed the Devops Methodology, but this methodology cannot be put int
 				- This command helps us in checking the differences between two versions of a file 'git diff <commit-id of version x> <commit-id of version y>'. <commit-id> can be obtained from the output of 'git log'
 			
    
-  - Docker
+  -> Docker:
+	- Problems Before Docker:
+		- Imagine you are a Developer, and you are creating a website on PHP, you need OS, PHP software, Libraries for you to be able to do that.
+	- The Problem:
+		- Developer		<-PHP Code->		Operations/Testing
   - Puppet
   - Ansible
   - Jenkins
@@ -171,7 +175,7 @@ QUIZ 2:
 		3. DevOps eliminates testing 
 		4. Traditional IT avoids using cloud services
 
-00:54:40
+1:21:55
 
 
 
