@@ -164,6 +164,13 @@ QUIZ 1:
 		3. Increasing manual tasks
 		4. Avoiding cloud technology
 
+QUIZ 2:
+	- Which of the following best describes a key difference between Traditional IT and DevOps?
+		1. DevOps emphasizes collaboration ✅
+		2. Traditional IT focuses on automation
+		3. DevOps eliminates testing 
+		4. Traditional IT avoids using cloud services
+
 00:54:40
 
 
