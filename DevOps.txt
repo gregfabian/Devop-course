@@ -137,7 +137,7 @@ We have discussed the Devops Methodology, but this methodology cannot be put int
 				- This command helps you in reverting a commit, to a previous version 'git revert <commit-id>'. <commit-id> can be obtained from the output of 'git log'.
 				- This command helps us in checking the differences between two versions of a file 'git diff <commit-id of version x> <commit-id of version y>'. <commit-id> can be obtained from the output of 'git log'
 			
-
+   
   - Docker
   - Puppet
   - Ansible
