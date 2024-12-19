@@ -139,10 +139,49 @@ We have discussed the Devops Methodology, but this methodology cannot be put int
 			
    
   -> Docker:
+---------------
 	- Problems Before Docker:
-		- Imagine you are a Developer, and you are creating a website on PHP, you need OS, PHP software, Libraries for you to be able to do that.
+	-------------------------
+		- Imagine you are a Developer, and you are creating a website on PHP, you need OS, PHP software, Libraries for you to be able to do that. Developers used to run the code on their system, it would run perfectly. But the same code did not run on the operations team system.
 	- The Problem:
+	----------------
 		- Developer		<-PHP Code->		Operations/Testing
+		- Works fine on my system!			- Doesn't work on my system. Faulty code!
+		- We needed an entity which can "contain" all the software dependencies, and can be ported on to other computers as plug & play package.
+	- The Answer:
+		- Developer gives the environment to Operation team for further testing and deploying on production.
+	- What is Docker?
+	-----------------
+		- Docker is a computer program that performs operating-system-level virtualization, also known as "containerization". It was first released in 2013 and is developed by Docker, Inc. Docker is used to run software packages called "containers".
+		- Docker is a software development platform for virtualization with multiple Operating systems running on the same host. It helps to separate infrastructure and applications in order to deliver software quickly. Unlike 'Hypervisors', which are used for creating VM (Virtual machines), virtualization in Docker is performed on system-level, also called Docker containers. Docker containers run on top of the host’s Operation system. This helps you to improves efficiency and security. Moreover, we can run more containers on the same infrastructure than we can run Virtual machines because containers use fewer resources.
+		- A hypervisor is a type of software, hardware, or firmware that allows a computer to run multiple virtual machines, or guest machines, on a single physical machine, or host machine. The hypervisor allocates the host machine's resources, like memory and CPU, to each virtual machine as needed.
+		- Application containerization is an OS-level Virtualization method used to deploy and run distributed applications without launching an entire Virtual Machin (VM) for each app.
+		-> Virtualization in Docker vs Hypervisor:
+		------------------------------------------
+			- Unlike the VMs which can communicate with the hardware of the host (ex: Ethernet adapter to create more virtual adapters) Docker containers run in an isolated environment on top of the host’s OS. Even if your host runs Windows OS, you can have Linux images running in containers with the help of Hyper-V, which automatically creates small VM to virtualize the system’s base image, in this case, Linux.
+		
+	-> Why use Docker?
+	-------------------
+		- Docker is computer software used for Virtualization in order to have multiple Operating systems running on the same host
+		- Docker is the client-server type of application which means we have clients who relay to the server
+		- Docker images are the “source code” for our containers; we use them to build
+		- Docker file has two types of registries 1.) public and 2.)private registries
+		- Containers are the organizational units of Docker volume. In simple terms, an image is a template, and a container is a copy of that template. You can have multiple containers (copies) of the same image.
+	-> Docker Architecture:
+	------------------------
+			-> Docker Engine:
+				- Docker is the client-server type of application which means we have clients who relay to the server. So the Docker daemon called: Dockerd is the Docker engine which represents the server. The docker daemon and the clients can be run on the same or remote host, and they communicate through command line client binary, as well as a full RESTful API to interact with the daemon: Dockerd.
+			-> Docker Images:
+				- Docker images are the “source code” for our containers; we use them to build containers. They can have software pre-installed which speeds up deployment. They are portable, and we can use existing images or build our own.
+			-> Docker Registries:
+				- Docker stores the images we build in registries. There are public and private registries. Docker company has public registry called 'Docker hub', where you can also store images privately. Docker hub has millions of images, which you can start using now.
+	-> Docker Containers:
+	---------------------
+		- Containers are the organizational units and one of the Docker basics concept. When we build an image and start running it; we are running in a container. The container analogy is used because of the portability of the software we have running in our container. We can move it, in other words, “ship” the software, modify, manage, create or get rid of it, destroy it, just as cargo ships can do with real containers.
+
+In simple terms, an image is a template, and a container is a copy of that template. You can have multiple containers (copies) of the same image.
+	
+
   - Puppet
   - Ansible
   - Jenkins
@@ -175,8 +214,9 @@ QUIZ 2:
 		3. DevOps eliminates testing 
 		4. Traditional IT avoids using cloud services
 
-1:21:55
-
+1:41:15
+--Docker Installation Windows
+-- https://store.docker.com/editions/community/docker-ce-desktop-windows
 
 
 
