@@ -193,6 +193,9 @@ In simple terms, an image is a template, and a container is a copy of that templ
 		- View Running Container states: e.g. 'docker ps -a'. If there are any stopped containers, they can be seen by adding the "-a" flag in this command.
 		- Exec or enter into the container: e.g. 'docker exec -it <container-id> bash'. For logging into/accessing the container, one can use the exec command. '-it' means make it interactive, 'bash' means I want to work on the current terminal.
 		- Stop the container: e.g. 'docker stop <container-id>'. For stopping a running container, we use the "stop" command.
+		- Kill the container: e.g. 'docker kill <container-id>'. This command kills the container by stopping its execution immediately. The difference between 'docker kill' and 'docker stop'. 'docker stop' gives the container time to shutdown gracefully, in situations when it is taking too much time for getting the container to stop, one can opt to kill it. 
+		- Remove a container: e.g. 'docker rm <container-id>'. To remove a stopped container from the system, we use the "rm" command.
+		- Remove an Image: e.g. 'docker rmi <image-id>'. To remove an image from the system we use the command "rmi".
 
 Think of a Docker image as a blueprint or template for building a container.
 
@@ -229,7 +232,7 @@ QUIZ 2:
 		3. DevOps eliminates testing 
 		4. Traditional IT avoids using cloud services
 
-1:54:00
+1:57:00
 --Docker Installation Windows
 -- https://store.docker.com/editions/community/docker-ce-desktop-windows
 
