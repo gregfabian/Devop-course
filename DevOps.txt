@@ -187,7 +187,7 @@ In simple terms, an image is a template, and a container is a copy of that templ
 		- images: e.g. 'docker images'. This command helps you in listing all the docker images, downloaded on your system. 
 			-What is a Docker Image?	
 			------------------------
-				- A Docker image is a lightweight, standalone, and executable package that includes everything needed to run a piece of software, including the code, runtime, libraries, environment variables, and configuration files. Docker images are used to create Docker containers, which are instances of the image running in an isolated environment.
+				- A Docker image is a lightweight, standalone, and executable package that includes everything needed to run a piece of software, including the code, runtime, libraries, environment variables, and configuration files. Docker images are used to create Docker containers, which are instances of the image running in an isolated environment. Think of a Docker image as a blueprint or template for building a container.
 		- Run: e.g. 'docker run -it -d <image-name>'. This command helps in running containers, from their image name. '-it' means make the container interactive, '-d' make the container a daemon that it should be running in the background even though I'm not working on it.
 		- Running containers: e.g. 'docker ps'. This command helps in listing all the containers which are running in the system.
 		- View Running Container states: e.g. 'docker ps -a'. If there are any stopped containers, they can be seen by adding the "-a" flag in this command.
@@ -195,9 +195,23 @@ In simple terms, an image is a template, and a container is a copy of that templ
 		- Stop the container: e.g. 'docker stop <container-id>'. For stopping a running container, we use the "stop" command.
 		- Kill the container: e.g. 'docker kill <container-id>'. This command kills the container by stopping its execution immediately. The difference between 'docker kill' and 'docker stop'. 'docker stop' gives the container time to shutdown gracefully, in situations when it is taking too much time for getting the container to stop, one can opt to kill it. 
 		- Remove a container: e.g. 'docker rm <container-id>'. To remove a stopped container from the system, we use the "rm" command.
-		- Remove an Image: e.g. 'docker rmi <image-id>'. To remove an image from the system we use the command "rmi".
+		- Remove an Image: e.g. 'docker rmi <image-id>'. To remove an image from the system we use the command "rmi". 
+		- Saving Changes to a container: e.g. 'docker commit <container-id> <name-of-image>'. With this command, a new image is created which can be seen under 'docker images' with the same name as passed in the command.
+		-> 1. Stop All Running Containers:
+		-----------------------------------
+			Use the following command to stop all running containers:
+				-> for /F "tokens=*" %i IN ('docker ps -q') DO docker stop %i
+		-> 2. Remove All Containers:
+		-----------------------------------
+			Use this command to remove all containers (both running and stopped):
+				-> for /F "tokens=*" %i IN ('docker ps -aq') DO docker rm -f %i
+				Explanation
+					for /F "tokens=* %i IN ('docker ps -q') DO ...:
+					Runs the docker ps -q command to get container IDs.
+					Iterates through the IDs (%i).
+					Executes docker stop or docker rm -f for each container ID.
 
-Think of a Docker image as a blueprint or template for building a container.
+			
 
   - Puppet
   - Ansible
@@ -232,7 +246,7 @@ QUIZ 2:
 		3. DevOps eliminates testing 
 		4. Traditional IT avoids using cloud services
 
-1:57:00
+2:12:00
 --Docker Installation Windows
 -- https://store.docker.com/editions/community/docker-ce-desktop-windows
 
