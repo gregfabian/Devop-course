@@ -211,6 +211,20 @@ In simple terms, an image is a template, and a container is a copy of that templ
 					Iterates through the IDs (%i).
 					Executes docker stop or docker rm -f for each container ID.
 
+		- Mapping Ports on containers: e.g. 'docker run -it -p 82:80 -d userId/apache'. For instances after installing apache in the container the apache runs on port 80, but the host operating system port runs on port 82. So the check if the apache works or not we have to map the ports against each other. -p port number you want to specify: Port number of the container that you want to link it with.
+			-> Port Mapping in Docker:
+			--------------------------
+				- Port mapping in Docker is a way to expose a container's internal network ports to the host machine or the outside world. Containers run in an isolated environment, and by default, they are not accessible externally. Port mapping allows you to bind a container's internal port to a port on the host machine.
+				- How Port Mapping Works
+					- When you use the -p flag in Docker, you specify two ports:
+					    e.g: 'docker run -d -p <host_port>:<container_port> <image_name>'
+						1. Host Port (<host_port>):
+							- The port on your host machine that external clients will connect to.
+						2. Container Port (<container_port>):
+							The port inside the container where the service (e.g., Apache) is running.
+					- When someone accesses http://<host_ip>:82, the Docker engine forwards that request to port 80 inside the container.
+		- Pushing a container to docker hub:
+
 			
 
   - Puppet
@@ -246,7 +260,7 @@ QUIZ 2:
 		3. DevOps eliminates testing 
 		4. Traditional IT avoids using cloud services
 
-2:12:00
+2:18:00
 --Docker Installation Windows
 -- https://store.docker.com/editions/community/docker-ce-desktop-windows
 

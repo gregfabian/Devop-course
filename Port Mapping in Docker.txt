@@ -1,0 +1,87 @@
+### **Port Mapping in Docker**
+Port mapping in Docker is a way to expose a container's internal network ports to the host machine or the outside world. Containers run in an isolated environment, and by default, they are not accessible externally. Port mapping allows you to bind a container's internal port to a port on the host machine.
+
+---
+
+### **How Port Mapping Works**
+When you use the `-p` flag in Docker, you specify two ports:
+```bash
+docker run -d -p <host_port>:<container_port> <image_name>
+```
+1. **Host Port (`<host_port>`)**:
+   - The port on your host machine that external clients will connect to.
+2. **Container Port (`<container_port>`)**:
+   - The port inside the container where the service (e.g., Apache) is running.
+
+For example:
+```bash
+docker run -d -p 8080:80 httpd:latest
+```
+- **8080**: The port on the host machine.
+- **80**: The port inside the container where Apache is listening.
+
+When someone accesses `http://<host_ip>:8080`, the Docker engine forwards that request to port 80 inside the container.
+
+---
+
+### **How AWS EC2 Serves as an External Server**
+When running a containerized application on an **AWS EC2 instance**, the EC2 instance serves as the external server (host) for the container. Here's how it works:
+
+#### **1. EC2 Instance as the Host**
+The EC2 instance acts as the physical or virtual machine hosting the Docker environment. When you run a container on an EC2 instance:
+- The container's service runs internally on the EC2 instance.
+- Port mapping (`-p`) exposes the container's internal port to the EC2 instance's network interface.
+
+#### **2. Configuring Security Groups**
+To allow external access to the mapped port, you must configure the EC2 instance's **security group**:
+- Open the **AWS Management Console**.
+- Navigate to the **Security Groups** section for your EC2 instance.
+- Add an inbound rule to allow traffic on the host port (`<host_port>`), e.g., 8080:
+  - Protocol: `TCP`
+  - Port Range: `8080`
+  - Source: `0.0.0.0/0` (to allow access from anywhere) or a specific IP range.
+
+#### **3. Accessing the Service**
+Once the security group is configured, you can access the containerized application using:
+```plaintext
+http://<ec2_instance_public_ip>:<host_port>
+```
+For example:
+```plaintext
+http://54.123.45.67:8080
+```
+- Replace `54.123.45.67` with your EC2 instance's public IP address or DNS.
+
+---
+
+### **How AWS EC2 Bridges External Traffic to Docker Containers**
+1. **Public Traffic to EC2**:
+   - External clients send traffic to the EC2 instance's public IP address on a specific port (e.g., 8080).
+2. **Security Group Validation**:
+   - AWS checks if the traffic is allowed by the EC2 instance's security group rules.
+3. **Docker Port Mapping**:
+   - If allowed, the traffic reaches the Docker engine on the EC2 instance.
+   - Docker forwards the traffic from the EC2 instance's `host_port` to the container's `container_port`.
+
+---
+
+### **End-to-End Example**
+1. **Run Apache Container**:
+   ```bash
+   docker run -d -p 8080:80 httpd:latest
+   ```
+
+2. **Allow Traffic in EC2 Security Group**:
+   - In AWS EC2 console, add an inbound rule for port 8080 in the security group.
+
+3. **Access the Apache Server**:
+   - Visit `http://<ec2_instance_public_ip>:8080` in your browser. You should see the Apache default page.
+
+---
+
+### Key Considerations
+- **Host Port Availability**: Ensure the port (`8080` in this case) is not already in use on the EC2 instance.
+- **Security**: Allowing `0.0.0.0/0` in the security group opens access to everyone. Restrict the source IP range for better security.
+- **Firewall**: Ensure there are no other firewalls (OS or network-level) blocking traffic.
+
+Let me know if you’d like help configuring this step-by-step!
