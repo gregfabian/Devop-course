@@ -224,7 +224,40 @@ In simple terms, an image is a template, and a container is a copy of that templ
 							The port inside the container where the service (e.g., Apache) is running.
 					- When someone accesses http://<host_ip>:82, the Docker engine forwards that request to port 80 inside the container.
 		- Pushing a container to docker hub:
-
+	-> Introduction to Dockerfile:
+	------------------------------
+		- A Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image. Using Docker build users can create an automated build that executes several command-line instructions in succession.
+			-> Various Commands in Dockerfile:
+				- The FROM keyword is used to define the base image, on which we will be building. e.g. FROM ubuntu.
+				- The ADD keyword is used to add files to the container being build. The syntax which is followed is ADD<source> <destination in container>. 
+					e.g. FROM ubuntu
+					     ADD ./var/www/html
+				- The RUN keyword is used to add layers to the base image, by installing components. Each RUN statement, adds a new layer to the docker image.
+					e.g. FROM ubuntu
+					     RUN apt-get update
+					     RUN apt-get -y install apache2
+					     ADD ./var/www/html
+				- The CMD keyword is used to run commands on the start of the container. These commands run only when there is no argument specified while running the container.
+					e.g. FROM ubuntu
+					     RUN apt-get update
+					     RUN apt-get -y install apache2
+					     ADD ./var/www/html
+					     CMD apachectl -D FOREGROUN
+				- The ENTRYPOINT keyword is used strictly run commands the moment the container initializes. The difference between CMD and ENTRYPOINT is, ENTRYPOINT will run irrespective of the fact whether argument is specified or not.
+					e.g. FROM ubuntu
+					     RUN apt-get update
+					     RUN apt-get -y install apache2
+					     ADD ./var/www/html
+					     CMD apachectl -D FOREGROUND
+					     ENTRYPOINT apachectl -D FOREGROUND
+				- The ENV keyword is used to define environment variables in the container run-time.
+					e.g. FROM ubuntu
+					     RUN apt-get update
+					     RUN apt-get -y install apache2
+					     ADD ./var/www/html
+					     CMD apachectl -D FOREGROUND
+					     ENTRYPOINT apachectl -D FOREGROUND
+					     ENV name Devops Fortesoft
 			
 
   - Puppet
@@ -260,7 +293,7 @@ QUIZ 2:
 		3. DevOps eliminates testing 
 		4. Traditional IT avoids using cloud services
 
-2:18:00
+2:27:00
 --Docker Installation Windows
 -- https://store.docker.com/editions/community/docker-ce-desktop-windows
 
