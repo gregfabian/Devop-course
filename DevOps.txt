@@ -256,10 +256,17 @@ In simple terms, an image is a template, and a container is a copy of that templ
 					     RUN apt-get -y install apache2
 					     ADD ./var/www/html
 					     CMD apachectl -D FOREGROUND
-					     ENTRYPOINT apachectl -D FOREGROUND
+					     ENTRYPOINT apachectl -D FOREGROUND -- with this we didn't need to start the apache services ourselves.
 					     ENV name Devops Fortesoft
+	-> Docker Volumes:
+	------------------
+		- Introduction to Docker Volumes:
+			- Docker Volumes are used to persist data across the lifetime of a container. This basically map or host the container outside the container so when you delete the container the storage still remains outside. And what ever you do is saved inside the host volumes outside the container rather than the container.
+			- Bind mount vs Docker Volumes:
+				- Bind mount is when you mount a particular file location inside the container.
+	
 			
-
+18.224.7.58:82
   - Puppet
   - Ansible
   - Jenkins
@@ -293,13 +300,13 @@ QUIZ 2:
 		3. DevOps eliminates testing 
 		4. Traditional IT avoids using cloud services
 
-2:27:00
+2:33:00
 --Docker Installation Windows
 -- https://store.docker.com/editions/community/docker-ce-desktop-windows
 
 
 
-
+https://www.youtube.com/watch?v=PFQBBYA7D_k
 
 
 
