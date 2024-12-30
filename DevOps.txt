@@ -263,7 +263,15 @@ In simple terms, an image is a template, and a container is a copy of that templ
 		- Introduction to Docker Volumes:
 			- Docker Volumes are used to persist data across the lifetime of a container. This basically map or host the container outside the container so when you delete the container the storage still remains outside. And what ever you do is saved inside the host volumes outside the container rather than the container.
 			- Bind mount vs Docker Volumes:
-				- Bind mount is when you mount a particular file location inside the container.
+				- Bind mount is when you mount a particular file location inside the container, while volumes are managed by docker unlike the bind mount which is decided by which directory you use.
+		- Creating a Docker Volume:
+			e.g. 'docker volume create <name-of-volume>'.
+		- View List Of Volumes: 
+			e.g. 'docker volume ls'.
+		- Attaching the volume to the container:
+			e.g. 'docker run -it --mount source=<name-of-volume>, target=<path-to-directory> -d <image-name>'. NOTE: When you create a volume you can access it through any container. 2:50:59
+	       NOTE: The volume is not attached to the image, it can only be accessed when you mount. 2:55:07
+	       NOTE: Docker volumes are not attached to images. Volumes are independent from both images and containers.
 	
 			
 18.224.7.58:82
@@ -300,7 +308,7 @@ QUIZ 2:
 		3. DevOps eliminates testing 
 		4. Traditional IT avoids using cloud services
 
-2:33:00
+2:44:00
 --Docker Installation Windows
 -- https://store.docker.com/editions/community/docker-ce-desktop-windows
 
