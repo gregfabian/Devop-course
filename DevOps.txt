@@ -273,7 +273,35 @@ In simple terms, an image is a template, and a container is a copy of that templ
 	       NOTE: The volume is not attached to the image, it can only be accessed when you mount. 2:55:07
 	       NOTE: Docker volumes are not attached to images. Volumes are independent from both images and containers.
 	
-			
+		
+	-> Microservices: Sometimes we have so many containers running simultaneously, or multiple containers working with each other. To understand this microservices we need to understand monolithic application.
+		-> What is a Monolithic Application:	
+			- A Monolithic application is a single-tiered software application in which different components are combined into a single program which resides in a single platform. 
+
+			- Single-tiered software, also known as one-tier architecture, is a software application architecture that puts all required components on a single server or machine: 
+
+			- User interface
+			The user interface is accessible by the application on the same local drive. 
+
+			- Business logic
+			The backend business logic is located on the same machine as the user interface and database. 
+
+			- Database
+			The database is located on the same machine as the user interface and backend business logic.	e.g. Uber App e.t.c.
+		-> Disadvantages Of a Monolithic Application:
+			❌ Application is large and complex to understand.
+			❌ Entire Application has to re-deploy on an application update.
+			❌ Bug in any module, can bring down entire application. This is because in a monolithic application everything is dependent on each other. 
+			❌ Has a barrier to adopting new technologies. That means all your module will stick to a single language or technology example java, all your module and features will have to be in one particular language.
+		-> What are Microservices?
+			- Microservices are a software development architectural style that structures an application as a collection of loosely coupled services. They're not dependent on each other unlike the Monolithic applications. e.g. using API to serve other features in an application.
+		-> Advantages of Microservices:
+			✅ Application is distributed, hence easy to understand.
+			✅ The code of only the microservice which is supposed to be updated is changed.
+			✅ No barrier to any specific technology.
+
+	-> What is Docker Compose?
+		- Compose is a tool for defining and running multi-container Docker applications. With Compose, you use a YAML file to configure your application's services. Then, with a single command, you create and start all the services from your configuration. Run 'docker-compose' up and compose starts and runs your entire app.
 18.224.7.58:82
   - Puppet
   - Ansible
@@ -308,7 +336,7 @@ QUIZ 2:
 		3. DevOps eliminates testing 
 		4. Traditional IT avoids using cloud services
 
-2:44:00
+3:06:48
 --Docker Installation Windows
 -- https://store.docker.com/editions/community/docker-ce-desktop-windows
 
