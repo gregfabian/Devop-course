@@ -302,6 +302,15 @@ In simple terms, an image is a template, and a container is a copy of that templ
 
 	-> What is Docker Compose?
 		- Compose is a tool for defining and running multi-container Docker applications. With Compose, you use a YAML file to configure your application's services. Then, with a single command, you create and start all the services from your configuration. Run 'docker-compose' up and compose starts and runs your entire app.
+		- Command for docker compose:
+			e.g. 'docker-compose up -d'
+			NOTE: When you remove the container for the compose the server will stop and the browser won't display anything. This leads us to using container orchestration.
+
+	-> Container Orchestration Tool: 
+		- This is when you have multiple containers launched and you want to monitor their health. This is a system that automates the deployment, management, scaling, networking, and monitoring of containerized applications. While Docker itself allows you to build and run containers, orchestration tools take it a step further by managing containers in complex environments, such as clusters, with multiple nodes and workloads. 
+		
+		- What is docker Swarm:
+			- Docker Swarm is a clustering and scheduling tool for Docker containers. With Swarm, IT administrators and Developers can establish and manage a cluster of Docker nodes as a single virtual system. Docker Swarm is a native clustering and orchestration tool for Docker containers. It allows you to manage and orchestrate a group of Docker engines (nodes) as a single virtual system. With Docker Swarm, you can deploy, scale, and manage containerized applications efficiently, making it easier to handle multiple containers across multiple servers. With Docker Swarm you will get the functionality of automatically monitoring the health of the containers. 
 18.224.7.58:82
   - Puppet
   - Ansible
@@ -336,7 +345,7 @@ QUIZ 2:
 		3. DevOps eliminates testing 
 		4. Traditional IT avoids using cloud services
 
-3:06:48
+3:17:00
 --Docker Installation Windows
 -- https://store.docker.com/editions/community/docker-ce-desktop-windows
 
