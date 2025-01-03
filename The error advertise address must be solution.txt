@@ -1,0 +1,74 @@
+The error **"advertise address must be a non-zero IP address or network interface (with optional port number)"** occurs because Docker requires a valid and reachable IP address or a network interface for the `--advertise-addr` flag, and `host.docker.internal` is not always accepted in this context.
+
+However, you can still use `host.docker.internal` indirectly or configure a valid IP address. Here's how to proceed:
+
+---
+
+### **Step 1: Use a Valid IP Address for `--advertise-addr`**
+
+1. **Find the Docker Desktop IP**:
+   - You can try using Docker Desktop's internal IP directly, which is typically reachable in the local network.
+   - Run the following to inspect the Docker Desktop network settings:
+     ```bash
+     docker network inspect bridge
+     ```
+     Look for the **Gateway** field in the output. This will be the IP you can use as the `--advertise-addr`.
+
+     Example:
+     ```json
+     {
+       "Name": "bridge",
+       "Id": "abcd1234...",
+       "Created": "2021-01-01T12:00:00.000000000Z",
+       "Scope": "local",
+       "Driver": "bridge",
+       "EnableIPv6": false,
+       "IPAM": {
+         "Driver": "default",
+         "Config": [
+           {
+             "Subnet": "172.17.0.0/16",
+             "Gateway": "172.17.0.1"
+           }
+         ]
+       },
+       ...
+     }
+     ```
+
+2. **Initialize Swarm with the Gateway IP**:
+   - Using the IP from the `Gateway` field, you can now initialize the Swarm:
+     ```bash
+     docker swarm init --advertise-addr 172.17.0.1
+     ```
+
+   Replace `172.17.0.1` with the actual gateway IP from your `docker network inspect bridge` output.
+
+---
+
+### **Step 2: Use `host.docker.internal` with the Correct Context**
+
+If you're trying to use `host.docker.internal` from within a Docker container or from WSL2, you can still use `host.docker.internal` for communication between your container and Docker Desktop services.
+
+However, when initializing the Swarm manager on Docker Desktop, Docker expects a specific, non-loopback IP address, not a hostname. Therefore, try to follow the previous step using an explicit IP address.
+
+---
+
+### **Step 3: Use `0.0.0.0` for Universal Access**
+
+If you don’t want to specify a specific IP address, you can use `0.0.0.0`, which binds the manager to all available network interfaces:
+
+```bash
+docker swarm init --advertise-addr 0.0.0.0
+```
+
+This will allow Docker to use any interface, though it's less restrictive. If you're on a local machine and are comfortable with this configuration, this can simplify the process.
+
+---
+
+### **Final Notes:**
+
+- After initializing the Swarm manager using a valid IP address or `0.0.0.0`, you can continue the process of joining worker nodes with the provided token.
+  
+- The `advertise-addr` is critical for ensuring that other nodes can find and connect to the manager. If Docker Desktop's IP changes, you may need to reinitialize the swarm with a new IP.
+

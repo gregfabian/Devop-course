@@ -310,7 +310,14 @@ In simple terms, an image is a template, and a container is a copy of that templ
 		- This is when you have multiple containers launched and you want to monitor their health. This is a system that automates the deployment, management, scaling, networking, and monitoring of containerized applications. While Docker itself allows you to build and run containers, orchestration tools take it a step further by managing containers in complex environments, such as clusters, with multiple nodes and workloads. 
 		
 		- What is docker Swarm:
-			- Docker Swarm is a clustering and scheduling tool for Docker containers. With Swarm, IT administrators and Developers can establish and manage a cluster of Docker nodes as a single virtual system. Docker Swarm is a native clustering and orchestration tool for Docker containers. It allows you to manage and orchestrate a group of Docker engines (nodes) as a single virtual system. With Docker Swarm, you can deploy, scale, and manage containerized applications efficiently, making it easier to handle multiple containers across multiple servers. With Docker Swarm you will get the functionality of automatically monitoring the health of the containers. 
+			- Docker Swarm is a clustering and scheduling tool for Docker containers. With Swarm, IT administrators and Developers can establish and manage a cluster of Docker nodes as a single virtual system. Docker Swarm is a native clustering and orchestration tool for Docker containers. It allows you to manage and orchestrate a group of Docker engines (nodes) as a single virtual system. With Docker Swarm, you can deploy, scale, and manage containerized applications efficiently, making it easier to handle multiple containers across multiple servers. With Docker Swarm you will get the functionality of automatically monitoring the health of the containers and it helps you keep a healthy number of containers that you have specified always in the running state. A Docker Swarm cannot work with just one machine, because light containers or even machines can be faulty sometimes, you may configure docker swarm on a single machine but can automatically repair a container, so what happens if the machine goes down, so to mitigate those kind of problems, we came up with distributed kind of architecture where in you will have multiple machines running in the swarm so there will be one machine that will be called the 'Leader' which will tell the 'workers' what will do and the workers will have the containers running on them, while they (workers) run on the cluster and also the workers will run the containers we wanna launch.
+
+			- To activate swarm:
+				e.g. "docker swarm init". After running this, Docker will initialize the current node as the Swarm Manager and provide a command to join other nodes.
+			- Verify Swarm Status:
+				e.g. "docker info". The output should show: Swarm: active
+			- Confirm Manager IP Address: If the Manager IP isn't clear, you can manually inspect it by using: 
+			e.g. "docker node ls"
 18.224.7.58:82
   - Puppet
   - Ansible
@@ -345,7 +352,7 @@ QUIZ 2:
 		3. DevOps eliminates testing 
 		4. Traditional IT avoids using cloud services
 
-3:17:00
+3:20:43
 --Docker Installation Windows
 -- https://store.docker.com/editions/community/docker-ce-desktop-windows
 
