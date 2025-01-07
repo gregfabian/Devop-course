@@ -316,9 +316,15 @@ In simple terms, an image is a template, and a container is a copy of that templ
 				e.g. "docker swarm init". After running this, Docker will initialize the current node as the Swarm Manager and provide a command to join other nodes.
 			- Verify Swarm Status:
 				e.g. "docker info". The output should show: Swarm: active
-			- Confirm Manager IP Address: If the Manager IP isn't clear, you can manually inspect it by using: 
-			e.g. "docker node ls"
-18.224.7.58:82
+			- Confirm Manager IP Address: 
+				If the Manager IP isn't clear, you can manually inspect it by using: 
+				e.g. "docker node ls"
+			- Creating a Docker Swarm Cluster:
+				e.g. "docker swarm init --advertise-addr <ip-address-of-leader>". This is the command passed on the worker node, to join the docker swarm cluster e.g. "docker swarm join --token <token-id> <leader-ip-address>:<port>"
+		- What is a Service?	
+			- Containers on the cluster are deployed using services on Docker Swarm. A service is a long-running Docker container that can be deployed to any node worker.
+				e.g. "docker service create -name <name-of-service> --replica <number-of-replicas> <image-name>". After this your containers gets auto scaled, which means when they get deleted the get created again. You can also scale your replica using .e.g. "docker service scale <name-of-replica>=<number-of-replica>". You can also remove services by running e.g. "docker service rm <service-name>"
+
   - Puppet
   - Ansible
   - Jenkins
@@ -352,19 +358,23 @@ QUIZ 2:
 		3. DevOps eliminates testing 
 		4. Traditional IT avoids using cloud services
 
-3:20:43
+3:25:43
 --Docker Installation Windows
 -- https://store.docker.com/editions/community/docker-ce-desktop-windows
 
-
+3:36:00 -> Docker swarm
 
 https://www.youtube.com/watch?v=PFQBBYA7D_k
 
+https://www.youtube.com/watch?v=DhVjgI57Ino -> Install Ubuntu virtually
+
+-- Install the Guest Additions installation:
+sudo apt update
+sudo apt install build-essential dkms linux-headers-$(uname -r)
 
 
 
-
-
+https://www.youtube.com/watch?v=Tm0Q5zr3FL4 -> Docker Swarm
 
 
 
