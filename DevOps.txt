@@ -325,7 +325,87 @@ In simple terms, an image is a template, and a container is a copy of that templ
 			- Containers on the cluster are deployed using services on Docker Swarm. A service is a long-running Docker container that can be deployed to any node worker.
 				e.g. "docker service create -name <name-of-service> --replica <number-of-replicas> <image-name>". After this your containers gets auto scaled, which means when they get deleted the get created again. You can also scale your replica using .e.g. "docker service scale <name-of-replica>=<number-of-replica>". You can also remove services by running e.g. "docker service rm <service-name>"
 
-  - Puppet
+  - Puppet:
+	-> What is Puppet?
+		- Puppet is an open-source software configuration management tool. It runs on many Unix-like systems as well as on Microsoft Windows, and includes its own declarative language to describe system configuration.
+	-> Key Features Of Puppet:
+		. Large User Base
+		. Big Open Source Community
+		. Documentation
+		. Platform Support
+	-> Puppet Architecture:
+		- Puppet follows a Master Slave Architecture.
+				-> Puppet Master: There's one master 
+					-> Puppet Slave: and there could be numerous slaves which are being served by the master.
+		- So what happens is that the Slave sends machine metadata or state to master. The Master does analysis on the data, and if any change is needed, sends the required changes to the slave. Then the Slave does the changes, and sends a report back to master, of the changes.
+		- Puppet Architecture - SSL Connection:
+			- Because Puppet nodes have to interact with the master, all the information which is communicated between the master node and the slave nodes are encrypted using SSL certificates, The certificate signing process is as follows:
+		-> 	check the slide
+		-> After the exchange of certificates between the Puppet Master and the Slave. On Master server, we have to sign the Slave Certificate in order to authenticate slave to access the Puppet Master.
+	-> Code Basics For Puppet:
+		- The most basic component of puppet code is a 'resource'. A resource describes something about the state of the system, such as a certain user or file should exist, or a package should be installed, etc. A resource could be a package, a file, it could be anything. 
+			- syntax: resource_type {'resource_name':	
+					attribute => value,
+					...						
+				} 
+			- Resource Example:
+				package{'nginx':
+				
+				ensure=>'installed',					
+			} // Whatever resources you mentioned gets installed in the agent.
+		- Docker Swarm focuses on orchestrating containerized applications across a cluster with manager and worker nodes, whereas Puppet manages the configuration of servers through a master-agent (formerly master-slave) architecture. e.g. 
+			docker::swarm { 'cluster_manager':
+  					init           => true,
+  					advertise_addr => '192.168.1.1',
+  					listen_addr    => '192.168.1.1',
+				}
+		- There are situations when you want to install multiple resources, this could be lead to defining them in a separate file, but they will have to be in one entity, so to solve that problem we use the manifest file.	
+		-> Code Basic For Puppet - Manifest:
+			- Manifest are basically a collection of resource declarations, using the extension .pp
+				- Example:
+					package{'nginx':
+					ensure=>'installed',
+					}
+					
+					file{'/tmp/hello.txt':
+					ensure=>present,
+					content=>'Hello World',
+					mode=>'0644',
+					}
+		-> There are three components of manifest:
+			- Variable, Loop, Conditions
+			- Variables: Variables can be defined at any point in a manifest. The most common types of variables are strings and arrays of strings, but other types are also supported, such as Booleans and hashes.
+				- Examples: 
+					$text="hello world"
+					
+					file{'/tmp/hello.txt':
+					ensure=>present,
+					content=>$text,
+					mode=>'0644',
+					}
+
+			- Loops: Loops are typically used to repeat a task using different input values. For instance, instead of creating 10 tasks for installing 10 different packages, you can create a single task and use a loop to repeat the task with all the different packages you want to install.
+				- Example:
+					$packages=['nginx','mysql-server']
+					package{$packages:
+					ensure=>installed,
+					}
+
+			- Conditions: Conditional can be used to dynamically decide whether or not a block of code should be executed, based on a variable or an output from a command, for instance.
+				- Example:
+					exec{"Text":
+					command=>'/bin/echo apache2 is installed> /tmp/status.txt',
+					onlyif=>'/bin/which apache2',
+					}
+
+		-> NOTE:In a Puppet infrastructure, the Puppet Master (or Puppet Server) is responsible for storing and delivering configurations to the Puppet Agents (or slaves). If the Puppet Master becomes unavailable due to a crash or other issues, the immediate impact on the Puppet Agents is as follows:
+
+	Configuration Application: Puppet Agents will be unable to retrieve updated configurations from the Puppet Master. This means that any changes made to configurations on the master won't be propagated to the agents until the master is restored.
+
+	Existing Functionality: The agents will continue to operate with their current configurations. They won't revert or change their behavior due to the master's unavailability; they simply won't receive updates.
+
+Once the Puppet Master is back online, the agents can resume their regular check-ins and apply any new configurations. To mitigate potential disruptions, it's advisable to implement redundancy for the Puppet Master, such as setting up a secondary master or using load balancing solutions.
+
   - Ansible
   - Jenkins
   - Kubernetes
@@ -358,11 +438,19 @@ QUIZ 2:
 		3. DevOps eliminates testing 
 		4. Traditional IT avoids using cloud services
 
-3:25:43
+QUIZ 3: 
+	- What is Docker primarily used for in DevOps?
+		1. Containerization of applications
+		2. Virtualizing hardware
+		3. Automating scripts
+		4. Monitoring server health
+
+4:20:00
 --Docker Installation Windows
 -- https://store.docker.com/editions/community/docker-ce-desktop-windows
 
 3:36:00 -> Docker swarm
+4:00:00 -> puppet master and slave
 
 https://www.youtube.com/watch?v=PFQBBYA7D_k
 

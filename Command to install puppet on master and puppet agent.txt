@@ -1,0 +1,140 @@
+//on master;
+-- update the machine
+sudo apt-get update
+
+-- install wget, it is pre-installed on AWS
+sudo apt-get install wget
+
+-- using wget to download the puppet-release-bionic.deb file
+wget https://apt.puppetlabs.com/puppet-release-bionic.deb
+
+-- unzip the file using dpkg
+sudo dpkg -i puppet-release-bionic.deb
+
+-- install puppet on the master machine
+sudo apt-get install puppetmaster
+
+-- Check the installation status by going to the policy
+apt policy puppetmaster
+
+-- Check the status of the puppet-master service
+sudo systemctl status puppet-master.service
+
+-- Edit or finetune some settings:
+ --This adds the default for running our puppet-master
+sudo vim /etc/default/puppet-master
+
+--Configure the memory for our puppet master to 512mb
+ -- JAVA_ARGS="-Xms512m -Xmx512m"
+
+--For applying the settings we restart the server
+sudo systemctl restart puppet-master.service
+
+
+-- Open the port through which puppet communicates with the slave
+sudo ufw allow 8140/tcp
+
+
+
+
+// Puppet Agent;
+-- update the machine
+sudo apt-get update
+
+-- install wget, it is pre-installed on AWS
+sudo apt-get install wget
+
+-- using wget to download the puppet-release-bionic.deb file
+wget https://apt.puppetlabs.com/puppet-release-bionic.deb
+
+-- unzip the file using dpkg
+sudo dpkg -i puppet-release-bionic.deb
+
+-- install puppet on the slave machine
+sudo apt-get install puppet
+
+-- Before you start the agent or slave, you need to enable the ip address for the host and slave, at this process behind the scene both machines will exchange the certificate on successful connection:
+--on master 
+sudo nano /etc/hosts
+-- when it opens the file u paste the ip address for the master server.
+--place it below the localhost
+---eg <masterIpaddress> puppet 
+
+--on slave
+sudo nano /etc/hosts
+-- when it opens the file you paste the Ip address of the host for the slave machine
+--place below the localhost
+---eg <masterIpaddress> puppet 
+
+-- Then you start the puppet agent
+sudo systemctl start puppet
+
+-- Enable the puppet agent, which means on restart of the master also the puppet slave will automatically start
+sudo systemctl enable puppet
+
+
+
+
+//Certificate
+//On master
+-- List any certificate which has been sent to the master
+-- Look at the ip-address it should match with the slaves, this intel's that the slave sent a certificate 
+sudo puppet cert list 
+
+
+--To sign the certificate
+sudo puppet cert sign --all
+
+-- Now our puppet master and slave can now interact
+
+
+// Creating manifest file
+-- Manifest: This specifies the changes to be made on the agent or slave machine 
+//Change Code:
+--First create a path on master
+sudo mkdir -p /etc/puppet/code/environments/production/manifests/
+
+--Edit the manifest file on the master
+sudo nano /etc/puppet/code/environments/production/manifests/site.app
+
+--And the content of the file should be:
+file{'/tmp/it_works.txt':					#resource type file and filen
+    ensure  => present,						# make sure it exists
+    mode    => '0644',						# file permissions
+    content => "It works on ${ipaddress_eth0}!\n",		# Print the eth0 IP fact
+}
+
+--save the file 
+
+--Then restart the puppet-master
+sudo systemctl restart puppet-master
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
