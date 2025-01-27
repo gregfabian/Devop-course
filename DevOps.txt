@@ -326,6 +326,7 @@ In simple terms, an image is a template, and a container is a copy of that templ
 				e.g. "docker service create -name <name-of-service> --replica <number-of-replicas> <image-name>". After this your containers gets auto scaled, which means when they get deleted the get created again. You can also scale your replica using .e.g. "docker service scale <name-of-replica>=<number-of-replica>". You can also remove services by running e.g. "docker service rm <service-name>"
 
   - Puppet:
+  --------------------------------------------
 	-> What is Puppet?
 		- Puppet is an open-source software configuration management tool. It runs on many Unix-like systems as well as on Microsoft Windows, and includes its own declarative language to describe system configuration.
 	-> Key Features Of Puppet:
@@ -392,13 +393,20 @@ In simple terms, an image is a template, and a container is a copy of that templ
 					}
 
 			- Conditions: Conditional can be used to dynamically decide whether or not a block of code should be executed, based on a variable or an output from a command, for instance.
+				-- onlyif:
 				- Example:
 					exec{"Text":
 					command=>'/bin/echo apache2 is installed> /tmp/status.txt',
-					onlyif=>'/bin/which apache2',
+					onlyif=>'/bin/which apache2', // Only if this command is successful then the command above will run.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
 					}
+				
+				-- unless: This is the opposite of onlyif
+					exec{"Test":
+					command=>'/bin/echo apache2 is not installed'> /tmp/status.txt,
+					unless=>'/bin/which apache2', // unless the command is successful the command above will not run.
 
-		-> NOTE:In a Puppet infrastructure, the Puppet Master (or Puppet Server) is responsible for storing and delivering configurations to the Puppet Agents (or slaves). If the Puppet Master becomes unavailable due to a crash or other issues, the immediate impact on the Puppet Agents is as follows:
+					}
+		-> NOTE: In a Puppet infrastructure, the Puppet Master (or Puppet Server) is responsible for storing and delivering configurations to the Puppet Agents (or slaves). If the Puppet Master becomes unavailable due to a crash or other issues, the immediate impact on the Puppet Agents is as follows:
 
 	Configuration Application: Puppet Agents will be unable to retrieve updated configurations from the Puppet Master. This means that any changes made to configurations on the master won't be propagated to the agents until the master is restored.
 
@@ -406,7 +414,10 @@ In simple terms, an image is a template, and a container is a copy of that templ
 
 Once the Puppet Master is back online, the agents can resume their regular check-ins and apply any new configurations. To mitigate potential disruptions, it's advisable to implement redundancy for the Puppet Master, such as setting up a secondary master or using load balancing solutions.
 
-  - Ansible
+  - Ansible:
+  -------------------------------------------------
+	-> What is Ansible:
+		
   - Jenkins
   - Kubernetes
   - Nagios
