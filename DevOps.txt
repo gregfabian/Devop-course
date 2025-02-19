@@ -417,8 +417,139 @@ Once the Puppet Master is back online, the agents can resume their regular check
   - Ansible:
   -------------------------------------------------
 	-> What is Ansible:
+		- Ansible is an open-source configuration management tool
+		- Used for configuration management
+		- Can solve wide range of automation challenges
+		- Written by Michael DeHaan
+		- Named after a fictional communication device, first used by Ursula K. LeGuin in her novel Rocannon's World in 1966
+		- In 2015, Red Hat acquired Ansible
+		- For more detail checkout the Ansible.txt
+
+	-> What is Ansible Playbook?
+		- An Organized unit of scripts Defines working for a server configuration Written in YAML.
+	-> Ansible Playbook Structure:
+		- Playbook have number of plays
+		- Play contains tasks. A play is a combination of multiple tasks you want to do on a host.
+		- Tasks calls core or custom modules. Each tasks has a module, notify, and handler e.t.c
+		- Handler gets triggered from notify and executed at the end only once.
+	-> Creating Ansible Playbook-Example:
+		-Say we want to create a playbook with two plays with following tasks
+		1. Execute a command in host1
+						Play1
+		2. Execute a script in host1
+
+		3. Execute a script in host2
+						Play2
+		4. Install nginx in host2
+
+  --Introduction to Software Testing:
+		-> Software testing is defined as an activity to check whether the actual results match with the expected results and to ensure that the software system is defect free.
+		-> Types of software Testing:
+			--Automated Testing 					Manual Testing
+			- Test cases are executed automatically.	 	-Test cases are executed manually.
+			- More accurate.				 	-Less accurate.
+			- More suitable when test cases 			-More suitable when test cases are
+			are run repeatedly.					supposed to run only once or twice			- Suitable for scenarios when testing is 		-More suitable when testing is for
+			functionality based.			 		user experience.
+
+		-> What is Selenium?
+			- Selenium is a portable framework for testing web applications. Selenium provides a playback tool for authoring functional tests without the need to learn a new test scripting language.
+		-> About:
+			- Selenium was first created by Jason Huggins in 2004.
+			- He was working on a web application which had to be frequently tested.
+			- Since manual testing was taking a lot of time, he wrote a JavaScript program.
+			- This program could automatically control the browser's actions.
+			- He named it as JavaScriptTestRunner and donated it to the open-source community.
+			- It was later named as Selenium Core.
+
+		-> Components Of Selenium:
+			- But only the Selenium Core could not suffice all the use cases of testing. Hence, a suite of Selenium components was developed for different purposes.
+
+				- Selenium RC:
+					- Due to same origin policy, testers had to install Selenium Core and the web server on their local system.	
+					- This was done to keep the domain same for the Selenium Core and the web application to be tested.
+					- Selenium RC is a web server, which acts as an HTTP proxy.
+					- It tricks the OS into believing both Selenium Core and the website to be tested are on the same domain.
+					- This system was also known as Selenium 1.
+
+				- Selenium IDE:
+					-Selenium IDE was originally created as a Firefox extension.
+					- It could automate tests using the record and playback feature.
+					- The intention behind creating this component was to increase the speed of creating test cases in Selenium.
+					- It was created by Shinya Kasatani from Japan.
+
+				- Selenium Grid:
+					- Selenium Grid enables parallel testing of applications on multiple machines.
+					- It was primarily created to minimize the time taken in executing test cases.
+					- It can be used across multiple browsers and OS.
+					- It can also be used to break down a huge test suite among many computers testing the same application. 
+				- WebDriver:
+					- Selenium WebDriver was the first cross-platform testing framework that could control the browser from the OS level.
+					- It was developed in 2006, when web applications and browsers were becoming more powerful and restrictive with JavaScript programs like Selenium Core.
+					- It was better than Selenium IDE and RC.
+					- It controls the browser by directly communicating with it.
+		-> WHAT IS MAVEN?
+			- Maven is a build automation tool used primarily for java projects. Maven addresses two aspects of building software: first, it describes how a software is built and, second, it describes its dependencies.
+		-> Why do we need Maven?
+			-Maven is used to download dependencies for a software program.
+			-Dependencies to be downloaded are included inside a POM file.
+			-Once the dependencies are added in the POM file, simply save the project and all the dependencies will automatically be downloaded.
+
+		-> Setting Up Selenium with maven:
+			- Install Java
+			- Download and Install Eclipse for Developers
+			- Create a Maven Project
+			- Acquire Maven Dependencies for Selenium
+		-> Creating Automated Tests:
+			- There are three steps to executing a web test:
+				- Find the element on the web browser
+				- Perform an action on the found element(s)
+				- Test and create a test report with the results
+		-> Finding Elements in Selenium:
+			- ID 	-Name	-Class Name  -Tag Name   -Link Text  -Partial Link Text  -XPATH
+			-Syntax:	WebElement button = driver.findElement(By.class("Cwak9"));
+
+
+		-> Performing Action on Elements:
+			- The next step is taking an action. For that, one can try the following options:
+				- Click(): Used to click on the link and wait for page load to complete before proceeding to the next command.
+				- sendKeys(): Used to enter values onto text boxes
+				- Clear(): Used to clear text boxes of its current value
+				- Submit(): WebDriver will automatically trigger the submit function of the form where that element belongs to.
+				-Syntax:
+					WebElement button = driver.findElement(By.class("Cwak9")).click();
+		-> What is TestNG?
+			- TestNG is an open-source automated testing framework, where NG means "Next Generation". It is a testing framework inspired from JUnit and NUnit, but introducing some new functionalities makes it more powerful and easier to use. It basically mimics towards certain level that whatever JUnit does TestNG can as well do, but whenever you have some action of testing to do use TestNG for that. So use TestNG when your pro-founding item is found to test the outcome if it's right or wrong.
+
+		-> Features Of TestNG:
+			- TestNG annotations are easy to create test cases.
+			- Test cases can be grouped and prioritized more easily.	
+			- It supports parameterization.
+			- It supports data-driven testing using DataProviders.
+			- It generates HTML reports.
+			- Parallel test execution is possible.
+			- It readily supports integration with other tools and plug-ins like Eclipse IDE, build tools Ant, Maven etc.
 		
-  - Jenkins
+		-> Annotations in TestNG:
+			- Annotations in TestNG are used to decide the flow of the program. There are a lot of annotations in TestNG, we will focus on the most used ones and following are the same:
+				-@BeforeSuite: The annotated method will be run only once before all tests in this suite have run.
+				-@BeforeTest: The annotated method will be run before any test method belonging to the classes inside the <test> tag is run.
+				-@BeforeClass: The annotated method will be run only once before the first test method in the current class is invoked.
+				-@BeforeMethod: The annotated method will be run before each test method.
+				-@Test: This marks a class or a method as a part of the test. 
+
+		-> Hands-On: Creating Our First Test Case:
+			- Open the Intellipaat website, by visiting www.intellipaat.com
+			- Enter "DevOps" term and click search
+			- On the search page, check for "DevOps Architect Master’s Training Program". If it exists, click on the course
+			- On the course page, verify if in the page "DevOps Architect Master’s Training Program" is present as the header.
+		->Introduction To Continuous Testing:
+			-Continuous Testing is the process of executing automated tests as part of the software delivery pipeline in order to obtain feedback on the business risks associated with a software release candidate as rapidly as possible.
+			- Products are built with their respective test suites while the features are being developed.
+			-Production Server					-Testing Server
+			-Product Features					-Test Suite
+			-Feature A						-Test suite for Feature A
+			-Feature B						-Test suite for Feature B
   - Kubernetes
   - Nagios
 - Devops Tools Based on stages:
@@ -451,17 +582,34 @@ QUIZ 2:
 
 QUIZ 3: 
 	- What is Docker primarily used for in DevOps?
-		1. Containerization of applications
+		1. Containerization of applications ✅
 		2. Virtualizing hardware
 		3. Automating scripts
 		4. Monitoring server health
 
-4:20:00
+QUIZ 4:
+	- What is a significant difference between Docker containers and virtual machines?
+		1. Containers share the host OS ✅
+		2. VMs are faster to start
+		3. Containers requires more resources
+		4. VMs are not isolated
+
+QUIZ 5:
+	- What is Git mainly used for in a DevOps environment?
+		1. Version control of code ✅
+		2. Managing cloud resources
+		3. Writing documentation
+		4. Automating Deployments
+
+6:52:00
 --Docker Installation Windows
 -- https://store.docker.com/editions/community/docker-ce-desktop-windows
 
 3:36:00 -> Docker swarm
 4:00:00 -> puppet master and slave
+4:39:00 -> Ansible
+5:14:00 -> Selenium
+6:45:00 -> Continuous testing
 
 https://www.youtube.com/watch?v=PFQBBYA7D_k
 
